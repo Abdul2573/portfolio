@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdul muqueet| Portfolio</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #eeeeee;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(18, 18, 18, 0.95);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      color: #c084fc;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #eeeeee;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover { color: #c084fc; }
+
+    .download-btn {
+      padding: 0.5rem 1rem;
+      background: #c084fc;
+      color: #121212;
+      border: none;
+      border-radius: 20px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .download-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #c084fc;
+      color: #000;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background: linear-gradient(135deg, #1c1c1c, #0d0d0d);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .hero img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 4px solid #c084fc;
+      box-shadow: 0 0 30px rgba(192,132,252,0.3);
+      animation: float 4s ease-in-out infinite, glowPulse 2s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 30px rgba(192,132,252,0.3); }
+      50% { box-shadow: 0 0 60px rgba(192,132,252,0.6); }
+    }
+
+    .hero h1 { font-size: 3rem; color: #c084fc; z-index: 1; }
+    .hero p { font-size: 1.2rem; color: #cccccc; margin: 1rem 0 2rem; z-index: 1; }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      background: #c084fc;
+      color: #121212;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #c084fc;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      color: #c084fc;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      margin: 1rem auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      max-width: 700px;
+    }
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      max-width: 700px;
+      margin: auto;
+      gap: 2rem 1.5rem;
+    }
+
+    .skill {
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .skill:hover { transform: scale(1.1); }
+
+    .project-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      width: 300px;
+      min-height: 460px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 1rem 0;
+    }
+
+    .project-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
+    }
+
+    footer {
+      width: 100%;
+      padding: 3rem 2rem;
+      text-align: center;
+      background: rgba(255,255,255,0.05);
+      color: #aaa;
+    }
+
+    footer a {
+      color: #c084fc;
+      text-decoration: none;
+    }
+
+    .social-icons img {
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #c084fc;
+      color: #121212;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #c084fc;
+    }
+
+    a {
+      color: #c084fc;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #e0b3ff;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: auto;
+      padding: 0 2rem;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background-color: #c084fc;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+
+    .timeline-box {
+      padding: 20px 30px;
+      position: relative;
+      width: 50%;
+      z-index: 1;
+    }
+
+    .timeline-box.left { left: 0; }
+    .timeline-box.right { left: 50%; }
+
+    .timeline-box::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      width: 20px;
+      height: 20px;
+      background-color: #121212;
+      border: 4px solid #c084fc;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    .timeline-box.left::before { right: -10px; }
+    .timeline-box.right::before { left: -10px; }
+
+    .content {
+      padding: 1rem 1.5rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: 0.3s;
+    }
+
+    .content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
+    }
+
+    .content h3 {
+      color: #c084fc;
+      margin-bottom: 0.3rem;
+    }
+
+    .content p {
+      color: #ccc;
+      margin: 0.2rem 0;
+    }
+    .about-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #333;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.about-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(192, 132, 252, 0.4);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.about-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.15), transparent 70%);
+  animation: glowRotate 6s linear infinite;
+  z-index: 0;
+}
+
+.about-card p {
+  position: relative;
+  z-index: 1;
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.7;
+}
+
+@keyframes glowRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+    @media screen and (max-width: 768px) {
+      .timeline-box {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-box::before {
+        top: 24px;
+        width: 16px;
+        height: 16px;
+        left: 100%;
+        transform: translateX(-50%);
+      }
+
+      .timeline-box.right::before {
+        left: 0%;
+        transform: translateX(-50%);
+      }
+      
+    }
+    .contact-form {
+  max-width: 600px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  color: #eee;
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #c084fc;
+  box-shadow: 0 0 10px rgba(192, 132, 252, 0.3);
+}
+
+.email-button {
+  align-self: center;
+  background: #c084fc;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px #c084fc;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.email-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #d8a5ff;
+}
+
+.email-button:active {
+  transform: scale(0.95);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Abdul Muqueet Sahil</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="Resume.pdf" class="download-btn" download>Download Resume</a></li>
+    </ul>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" data-aos="fade-up">
+    <img src="profile.png" alt="Profile">
+    <h1>Hi, I'm <span style="color: #c084fc">Abdul Muqueet</span></h1>
+    <p> MERN | C++ | Python | Machine Learning</p>
+    <a href="#projects" class="btn">View Projects</a>
+  </section>
+
+  <!-- About -->
+ <section id="about" class="section" data-aos="fade-up">
+  <h2>About Me</h2>
+  <div class="card about-card">
+    <p>
+      I’m <span style="color:#c084fc; font-weight: 600;">Abdul Muqueet</span>, a passionate Full Stack Developer with a strong foundation in the 
+      <span style="color:#c084fc;">MERN stack</span>, <span style="color:#c084fc;">C++</span>, and <span style="color:#c084fc;">Python</span>. 
+      I enjoy building responsive, user-centric web applications that solve real-world problems. 
+      With hands-on experience from internships at 
+      <span style="color:#c084fc;">eSamyak Software</span>, <span style="color:#c084fc;">Magna Electronics</span>, and <span style="color:#c084fc;">AICTE</span>, 
+      I’ve worked on diverse projects ranging from admission predictors to e-commerce platforms and deep learning-based applications. 
+      I thrive in collaborative environments and am always eager to learn, innovate, and turn ideas into impactful digital solutions.
+    </p>
+  </div>
+</section>
+
+  <!-- Skills -->
+  <section id="skills" class="section" data-aos="fade-up">
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <!-- Add your skills here -->
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="50"><p>HTML</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="50"><p>CSS</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="50"><p>JavaScript</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="50"><p>React</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="50"><p>Node.js</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="50"><p>Express</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" width="50"><p>Flask</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="50"><p>MySQL</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="50"><p>MongoDB</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="50"><p>Python</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="50"><p>C++</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="50"><p>GitHub</p></div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="section" data-aos="fade-up">
+    <h2><i class="fas fa-briefcase" style="color:#c084fc;"></i> Experience</h2>
+    <div class="timeline">
+      <div class="timeline-box left">
+        <div class="content">
+          <h3>eSamyak Software</h3>
+          <p>Web Development Intern</p>
+          <p>Jan 2024 – Mar 2024</p>
+        </div>
+      </div>
+      <div class="timeline-box right">
+        <div class="content">
+          <h3>Magna Electronics</h3>
+          <p>Software Test Engineer Intern</p>
+          <p>May 2024 – Present</p>
+        </div>
+      </div>
+      <div class="timeline-box left">
+        <div class="content">
+          <h3>AICTE Virtual Internship</h3>
+          <p>Cybersecurity Intern</p>
+          <p>Jan 2024 – Mar 2024</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section" data-aos="zoom-in-up">
+    <h2>Projects</h2>
+    <div class="project-container">
+      <div class="project-card">
+        <h3>Engineering Admission Predictor</h3>
+        <img src="collegepredictor.png" alt="Project 1">
+        <p>Built with AdaBoost + Flask to help students predict suitable colleges using MHT-CET scores.</p>
+        <a href="https://github.com/Abdul2573" target="_blank">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Jewelry E-commerce Website</h3>
+        <img src="samyak.png" alt="Project 2">
+        <p>Developed with MySQL and Express.js featuring image optimization and secure backend.</p>
+        <a href="https://github.com/Abdul2573" target="_blank">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Driver Drowsiness Detection</h3>
+        <img src="driver.png" alt="Project 3">
+        <p>Real-time detection using YOLOv8, MediaPipe & OpenCV with a modern GUI using CustomTkinter.</p>
+        <a href="https://github.com/Abdul2573" target="_blank">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+<section id="contact" class="section" data-aos="fade-up">
+  <h2>Contact</h2>
+  <form onsubmit="saveForm(event)" class="contact-form">
+    <div class="form-group">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="email-button">
+        <img src="https://img.icons8.com/ios-filled/24/ffffff/new-post.png" alt="Send" />
+      </button>
+    </div>
+  </form>
+</section>
+
+
+
+
+
+  <!-- Footer -->
+  <footer>
+    <h2>Let's Connect</h2>
+    <p>📍 Pune, Maharashtra, India</p>
+    <p>📧 <a href="mailto:abdul.sahil@mitaoe.ac.in">abdul.sahil@mitaoe.ac.in</a></p>
+    <p>📞 +91-XXXXXXXXXX</p>
+    <div class="social-icons">
+      <a href="https://github.com/Abdul2573" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="28"></a>
+      <a href="https://linkedin.com/in/abdul-muqueet-sahil-968265257"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="28"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" width="26" style="filter: invert(1);"></a>
+    </div>
+    <p style="margin-top: 1.5rem;">&copy; 2025 Abdul Muqueet. All rights reserved.</p>
+  </footer>
+
+  <!-- Back to Top -->
+  <button onclick="scrollToTop()" class="back-to-top">↑</button>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 1000 });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+  <script>
+  function saveForm(event) {
+    event.preventDefault();
+
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const message = event.target.message.value;
+
+    const data = {
+      name,
+      email,
+      message,
+      submittedAt: new Date().toLocaleString()
+    };
+
+    let messages = JSON.parse(localStorage.getItem("contactMessages")) || [];
+    messages.push(data);
+    localStorage.setItem("contactMessages", JSON.stringify(messages));
+
+    alert("Message saved locally!");
+    event.target.reset();
+  }
+</script>
+
+
+</body>
+</html>
